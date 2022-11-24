@@ -19,5 +19,6 @@
     ],
     "rules": {
         "react/jsx-filename-extension" : "off",
+        "no-alert": "off"
     }
 }
