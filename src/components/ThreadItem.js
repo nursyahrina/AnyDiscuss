@@ -55,7 +55,7 @@ function ThreadItem({
             {category}
           </p>
           <h3 className="thread-item__title">{title}</h3>
-          <p className="thread-item__body">{parser(body)}</p>
+          <div className="thread-item__body">{parser(body)}</div>
         </article>
         <div className="thread-item__upVotess">
           <p>
@@ -93,7 +93,7 @@ const threadItemShape = {
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   authUser: PropTypes.string.isRequired,
-  user: PropTypes.shape(userShape).isRequired,
+  ownerId: PropTypes.shape(userShape).isRequired,
 };
 
 ThreadItem.propTypes = {

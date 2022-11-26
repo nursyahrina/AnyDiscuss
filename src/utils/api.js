@@ -135,14 +135,11 @@ const api = (() => {
   }
 
   async function toggleUpVoteThread(id) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/up-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${id}/up-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        threadId: id,
-      }),
     });
 
     const responseJson = await response.json();
@@ -155,14 +152,11 @@ const api = (() => {
   }
 
   async function toggleDownVoteThread(id) {
-    const response = await fetchWithAuth(`${BASE_URL}/threads/down-vote`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${id}/down-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        threadId: id,
-      }),
     });
 
     const responseJson = await response.json();
