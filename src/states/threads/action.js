@@ -46,13 +46,13 @@ function toggleDownVoteThreadActionCreator({ threadId, userId }) {
   };
 }
 
-function asyncAddThread({ text, replyTo = '' }) {
+function asyncAddThread({ title, category, body }) {
   return async (dispatch) => {
     dispatch(showLoading());
 
     try {
-      const talk = await api.createThread({ text, replyTo });
-      dispatch(addThreadActionCreator(talk));
+      const thread = await api.createThread({ title, body, category });
+      dispatch(addThreadActionCreator(thread));
     } catch (error) {
       alert(error.message);
     }

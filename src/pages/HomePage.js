@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ThreadsList from '../components/ThreadsList';
 import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 import { asyncToogleUpVoteThread, asyncToogleDownVoteThread } from '../states/threads/action';
+import AddButton from '../components/AddButton';
 
 function HomePage() {
   const {
@@ -33,6 +34,9 @@ function HomePage() {
   return (
     <section className="section-container">
       <ThreadsList threads={threadList} upVote={onUpVote} downVote={onDownVote} />
+      <aside>
+        <AddButton className="fixed bottom-16 right-8" />
+      </aside>
     </section>
   );
 }
