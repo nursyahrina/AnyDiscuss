@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
-import { BiUpvote, BiDownvote } from 'react-icons/bi';
 import { postedAt } from '../utils';
 import { userShape } from './ThreadItem';
+import VoteButtons from './VoteButtons';
 
 function CommentItem({
   id, content,
@@ -11,24 +11,6 @@ function CommentItem({
   owner, authUser,
   upVote, downVote, clearVote,
 }) {
-  const isCommentUpVoted = upVotesBy.includes(authUser);
-  const isCommentDownVoted = downVotesBy.includes(authUser);
-
-  const onUpVoteClick = (event) => {
-    event.stopPropagation();
-    upVote(id);
-  };
-
-  const onDownVoteClick = (event) => {
-    event.stopPropagation();
-    downVote(id);
-  };
-
-  const onClearVoteClick = (event) => {
-    event.stopPropagation();
-    clearVote(id);
-  };
-
   return (
     <div role="button" tabIndex={0} className="comment-item">
       <div className="comment-item__user-avatar">
@@ -45,33 +27,15 @@ function CommentItem({
           <div className="comment-item__body">{parser(content)}</div>
         </article>
         <div className="comment-item__upVotess">
-          <p>
-            { isCommentUpVoted ? (
-              <button type="button" aria-label="upVote" onClick={onClearVoteClick}>
-                <BiUpvote style={{ color: 'red' }} />
-              </button>
-            ) : (
-              <button type="button" aria-label="upVote" onClick={onUpVoteClick}>
-                <BiUpvote />
-                {' '}
-              </button>
-            )}
-            {' '}
-            {upVotesBy.length}
-            {' | '}
-            { isCommentDownVoted ? (
-              <button type="button" aria-label="upVote" onClick={onClearVoteClick}>
-                <BiDownvote style={{ color: 'grey' }} />
-              </button>
-            ) : (
-              <button type="button" aria-label="upVote" onClick={onDownVoteClick}>
-                <BiDownvote />
-                {' '}
-              </button>
-            )}
-            {' '}
-            {downVotesBy.length}
-          </p>
+          <VoteButtons
+            id={id}
+            authUser={authUser}
+            upVotes={upVotesBy}
+            downVotes={downVotesBy}
+            upVote={upVote}
+            downVote={downVote}
+            clearVote={clearVote}
+          />
         </div>
       </div>
     </div>

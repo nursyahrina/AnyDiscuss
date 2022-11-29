@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BiUpvote, BiDownvote } from 'react-icons/bi';
 import { postedAt } from '../utils';
 import { userShape } from './ThreadItem';
+import VoteButtons from './VoteButtons';
 
 function ThreadDetail({
   id, title, body,
@@ -11,9 +11,6 @@ function ThreadDetail({
   owner, authUser,
   upVote, downVote, clearVote,
 }) {
-  const isThreadUpVoted = upVotesBy.includes(authUser);
-  const isThreadDownVoted = downVotesBy.includes(authUser);
-
   return (
     <section className="thread-detail">
       <header>
@@ -31,32 +28,16 @@ function ThreadDetail({
         <p className="thread-detail__body">{body}</p>
       </article>
       <aside>
-        <div className="thread-detail__like">
-          { isThreadUpVoted ? (
-            <button type="button" aria-label="upVote" onClick={() => clearVote(id)}>
-              <BiUpvote style={{ color: 'red' }} />
-            </button>
-          ) : (
-            <button type="button" aria-label="upVote" onClick={() => upVote(id)}>
-              <BiUpvote />
-              {' '}
-            </button>
-          )}
-          {' '}
-          {upVotesBy.length}
-          {' | '}
-          { isThreadDownVoted ? (
-            <button type="button" aria-label="upVote" onClick={() => clearVote(id)}>
-              <BiDownvote style={{ color: 'grey' }} />
-            </button>
-          ) : (
-            <button type="button" aria-label="upVote" onClick={() => downVote(id)}>
-              <BiDownvote />
-              {' '}
-            </button>
-          )}
-          {' '}
-          {downVotesBy.length}
+        <div className="thread-detail__votes">
+          <VoteButtons
+            id={id}
+            authUser={authUser}
+            upVotes={upVotesBy}
+            downVotes={downVotesBy}
+            upVote={upVote}
+            downVote={downVote}
+            clearVote={clearVote}
+          />
         </div>
         <p className="thread-detail__created-at">{postedAt(createdAt)}</p>
       </aside>
