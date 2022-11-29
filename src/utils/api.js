@@ -103,9 +103,9 @@ const api = (() => {
       throw new Error(message);
     }
 
-    const { data: { threadDetail } } = responseJson;
+    const { data: { detailThread } } = responseJson;
 
-    return threadDetail;
+    return detailThread;
   }
 
   async function createThread({ title, body, category = '' }) {
@@ -134,7 +134,31 @@ const api = (() => {
     return thread;
   }
 
-  async function toggleUpVoteThread(id) {
+  async function commentThread({ id, content }) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${id}/comments`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content,
+      }),
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { comment } } = responseJson;
+
+    return comment;
+  }
+
+  async function upVoteThread(id) {
     const response = await fetchWithAuth(`${BASE_URL}/threads/${id}/up-vote`, {
       method: 'POST',
       headers: {
@@ -151,8 +175,25 @@ const api = (() => {
     }
   }
 
-  async function toggleDownVoteThread(id) {
+  async function downVoteThread(id) {
     const response = await fetchWithAuth(`${BASE_URL}/threads/${id}/down-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+  }
+
+  async function clearVoteThread(id) {
+    const response = await fetchWithAuth(`${BASE_URL}/threads/${id}/neutral-vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -176,8 +217,10 @@ const api = (() => {
     getAllThreads,
     getThreadDetail,
     createThread,
-    toggleUpVoteThread,
-    toggleDownVoteThread,
+    commentThread,
+    upVoteThread,
+    downVoteThread,
+    clearVoteThread,
   };
 })();
 

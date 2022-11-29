@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ThreadsList from '../components/ThreadsList';
 import { asyncPopulateUsersAndThreads } from '../states/shared/action';
-import { asyncToogleUpVoteThread, asyncToogleDownVoteThread } from '../states/threads/action';
+import { asyncUpVoteThread, asyncDownVoteThread, asyncClearVoteThread } from '../states/threads/action';
 import AddButton from '../components/AddButton';
 
 function HomePage() {
@@ -19,10 +19,15 @@ function HomePage() {
   }, [dispatch]);
 
   const onUpVote = (id) => {
-    dispatch(asyncToogleUpVoteThread(id));
+    dispatch(asyncUpVoteThread(id));
   };
+
   const onDownVote = (id) => {
-    dispatch(asyncToogleDownVoteThread(id));
+    dispatch(asyncDownVoteThread(id));
+  };
+
+  const onClearVote = (id) => {
+    dispatch(asyncClearVoteThread(id));
   };
 
   const threadList = threads.map((thread) => ({
@@ -33,7 +38,12 @@ function HomePage() {
 
   return (
     <section className="section-container">
-      <ThreadsList threads={threadList} upVote={onUpVote} downVote={onDownVote} />
+      <ThreadsList
+        threads={threadList}
+        upVote={onUpVote}
+        downVote={onDownVote}
+        clearVote={onClearVote}
+      />
       <aside>
         <AddButton className="fixed bottom-16 right-8" />
       </aside>

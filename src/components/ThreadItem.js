@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import parser from 'html-react-parser';
 import { BiUpvote, BiDownvote } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import parser from 'html-react-parser';
 import { postedAt } from '../utils';
 
 function ThreadItem({
-  id, title, body, category, createdAt, upVotesBy, downVotesBy, ownerId, authUser, upVote, downVote,
+  id, title, body, category,
+  createdAt, upVotesBy, downVotesBy,
+  ownerId, authUser,
+  upVote, downVote, clearVote,
 }) {
   const navigate = useNavigate();
   const isThreadUpVoted = upVotesBy.includes(authUser);
@@ -20,6 +23,11 @@ function ThreadItem({
   const onDownVoteClick = (event) => {
     event.stopPropagation();
     downVote(id);
+  };
+
+  const onClearVoteClick = (event) => {
+    event.stopPropagation();
+    clearVote(id);
   };
 
   const onThreadClick = () => {
@@ -39,9 +47,9 @@ function ThreadItem({
       </div>
       <div className="thread-item__detail">
         <header>
-          <div className="thread-item__user-info">
-            <p className="thread-item__user-name">{ownerId.name}</p>
-            <p className="thread-item__user-id">
+          <div className="thread-item__owner-info">
+            <p className="thread-item__owner-name">{ownerId.name}</p>
+            <p className="thread-item__owner-id">
               {/* Take string before @ as display username */}
               @
               {ownerId.email.substring(0, ownerId.email.indexOf('@'))}
@@ -59,15 +67,29 @@ function ThreadItem({
         </article>
         <div className="thread-item__upVotess">
           <p>
-            <button type="button" aria-label="upVote" onClick={onUpVoteClick}>
-              { isThreadUpVoted ? <BiUpvote style={{ color: 'red' }} /> : <BiUpvote />}
-            </button>
+            { isThreadUpVoted ? (
+              <button type="button" aria-label="upVote" onClick={onClearVoteClick}>
+                <BiUpvote style={{ color: 'red' }} />
+              </button>
+            ) : (
+              <button type="button" aria-label="upVote" onClick={onUpVoteClick}>
+                <BiUpvote />
+                {' '}
+              </button>
+            )}
             {' '}
             {upVotesBy.length}
             {' | '}
-            <button type="button" aria-label="downVote" onClick={onDownVoteClick}>
-              { isThreadDownVoted ? <BiDownvote style={{ color: 'grey' }} /> : <BiDownvote />}
-            </button>
+            { isThreadDownVoted ? (
+              <button type="button" aria-label="upVote" onClick={onClearVoteClick}>
+                <BiDownvote style={{ color: 'grey' }} />
+              </button>
+            ) : (
+              <button type="button" aria-label="upVote" onClick={onDownVoteClick}>
+                <BiDownvote />
+                {' '}
+              </button>
+            )}
             {' '}
             {downVotesBy.length}
           </p>
@@ -100,11 +122,13 @@ ThreadItem.propTypes = {
   ...threadItemShape,
   upVote: PropTypes.func,
   downVote: PropTypes.func,
+  clearVote: PropTypes.func,
 };
 
 ThreadItem.defaultProps = {
   upVote: null,
   downVote: null,
+  clearVote: null,
 };
 
 export { threadItemShape };
