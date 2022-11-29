@@ -131,6 +131,6 @@ ThreadItem.defaultProps = {
   clearVote: null,
 };
 
-export { threadItemShape };
+export { threadItemShape, userShape };
 
 export default ThreadItem;

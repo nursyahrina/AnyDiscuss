@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BiUpvote, BiDownvote } from 'react-icons/bi';
 import { postedAt } from '../utils';
+import { userShape } from './ThreadItem';
 
 function ThreadDetail({
   id, title, body,
@@ -79,12 +80,6 @@ function ThreadDetail({
     </section>
   );
 }
-
-const userShape = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-};
 
 const commentShape = {
   id: PropTypes.string.isRequired,

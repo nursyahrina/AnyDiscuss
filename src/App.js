@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import RegisterPage from './pages/RegisterPage';
 import AddPage from './pages/AddPage';
 import DetailPage from './pages/DetailPage';
+import LeaderboardsPage from './pages/LeaderboardsPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
 
@@ -57,6 +58,7 @@ function ForumApp() {
             <Route path="/" element={<HomePage />} />
             <Route path="/threads/new" element={<AddPage />} />
             <Route path="/threads/:id" element={<DetailPage />} />
+            <Route path="/leaderboards" element={<LeaderboardsPage />} />
           </Routes>
         </main>
       </div>
