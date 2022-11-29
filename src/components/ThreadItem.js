@@ -87,13 +87,13 @@ const threadItemShape = {
   createdAt: PropTypes.string.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  authUser: PropTypes.string.isRequired,
   ownerId: PropTypes.shape(userShape).isRequired,
   totalComments: PropTypes.number.isRequired,
 };
 
 ThreadItem.propTypes = {
   ...threadItemShape,
+  authUser: PropTypes.string.isRequired,
   upVote: PropTypes.func,
   downVote: PropTypes.func,
   clearVote: PropTypes.func,

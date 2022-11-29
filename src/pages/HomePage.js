@@ -18,6 +18,12 @@ function HomePage() {
     dispatch(asyncPopulateUsersAndThreads());
   }, [dispatch]);
 
+  const threadList = threads.map((thread) => ({
+    ...thread,
+    ownerId: users.find((user) => user.id === thread.ownerId),
+    authUser: authUser.id,
+  }));
+
   const onUpVote = (id) => {
     dispatch(asyncUpVoteThread(id));
   };
@@ -30,16 +36,11 @@ function HomePage() {
     dispatch(asyncClearVoteThread(id));
   };
 
-  const threadList = threads.map((thread) => ({
-    ...thread,
-    ownerId: users.find((user) => user.id === thread.ownerId),
-    authUser: authUser.id,
-  }));
-
   return (
     <section className="section-container">
       <ThreadsList
         threads={threadList}
+        authUser={authUser.id}
         upVote={onUpVote}
         downVote={onDownVote}
         clearVote={onClearVote}
