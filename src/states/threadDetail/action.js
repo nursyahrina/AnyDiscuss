@@ -8,6 +8,9 @@ const ActionType = {
   DOWN_VOTE_THREAD_DETAIL: 'DOWN_VOTE_THREAD_DETAIL',
   CLEAR_VOTE_THREAD_DETAIL: 'CLEAR_VOTE_THREAD_DETAIL',
   COMMENT_THREAD_DETAIL: 'COMMENT_THREAD_DETAIL',
+  UP_VOTE_COMMENT: 'UP_VOTE_COMMENT',
+  DOWN_VOTE_COMMENT: 'DOWN_VOTE_COMMENT',
+  CLEAR_VOTE_COMMENT: 'CLEAR_VOTE_COMMENT',
 };
 
 function receiveThreadDetailActionCreator(threadDetail) {
@@ -48,6 +51,36 @@ function clearVoteThreadDetailActionCreator(userId) {
     type: ActionType.CLEAR_VOTE_THREAD_DETAIL,
     payload: {
       userId,
+    },
+  };
+}
+
+function upVoteCommentActionCreator(userId, commentId) {
+  return {
+    type: ActionType.UP_VOTE_COMMENT,
+    payload: {
+      userId,
+      commentId,
+    },
+  };
+}
+
+function downVoteCommentActionCreator(userId, commentId) {
+  return {
+    type: ActionType.DOWN_VOTE_COMMENT,
+    payload: {
+      userId,
+      commentId,
+    },
+  };
+}
+
+function clearVoteCommentActionCreator(userId, commentId) {
+  return {
+    type: ActionType.CLEAR_VOTE_COMMENT,
+    payload: {
+      userId,
+      commentId,
     },
   };
 }
@@ -144,6 +177,57 @@ function asyncAddCommentThreadDetail({ content }) {
   };
 }
 
+function asyncUpVoteComment(commentId) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+
+    const { authUser, threadDetail } = getState();
+    dispatch(upVoteCommentActionCreator(authUser.id, commentId));
+
+    try {
+      await api.upVoteComment(threadDetail.id, commentId);
+    } catch (error) {
+      alert(error.message);
+    }
+
+    dispatch(hideLoading());
+  };
+}
+
+function asyncDownVoteComment(commentId) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+
+    const { authUser, threadDetail } = getState();
+    dispatch(downVoteCommentActionCreator(authUser.id, commentId));
+
+    try {
+      await api.downVoteComment(threadDetail.id, commentId);
+    } catch (error) {
+      alert(error.message);
+    }
+
+    dispatch(hideLoading());
+  };
+}
+
+function asyncClearVoteComment(commentId) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+
+    const { authUser, threadDetail } = getState();
+    dispatch(clearVoteCommentActionCreator(authUser.id, commentId));
+
+    try {
+      await api.clearVoteComment(threadDetail.id, commentId);
+    } catch (error) {
+      alert(error.message);
+    }
+
+    dispatch(hideLoading());
+  };
+}
+
 export {
   ActionType,
   receiveThreadDetailActionCreator,
@@ -156,4 +240,7 @@ export {
   asyncDownVoteDetail,
   asyncClearVoteDetail,
   asyncAddCommentThreadDetail,
+  asyncUpVoteComment,
+  asyncDownVoteComment,
+  asyncClearVoteComment,
 };

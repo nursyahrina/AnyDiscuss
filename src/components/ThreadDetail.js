@@ -8,7 +8,7 @@ function ThreadDetail({
   id, title, body,
   category, createdAt,
   upVotesBy, downVotesBy,
-  owner, comments, authUser,
+  owner, authUser,
   upVote, downVote, clearVote,
 }) {
   const isThreadUpVoted = upVotesBy.includes(authUser);
@@ -60,35 +60,9 @@ function ThreadDetail({
         </div>
         <p className="thread-detail__created-at">{postedAt(createdAt)}</p>
       </aside>
-      <article>
-        <div className="comments-list">
-          {
-         comments.map((comment) => (
-           <p key={comment.id}>
-             {comment.content}
-             {' '}
-             by
-             {' '}
-             {comment.owner.name}
-             {' '}
-           </p>
-         ))
-      }
-        </div>
-      </article>
-
     </section>
   );
 }
-
-const commentShape = {
-  id: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  owner: PropTypes.shape(userShape).isRequired,
-  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
 
 ThreadDetail.propTypes = {
   id: PropTypes.string.isRequired,
@@ -99,7 +73,6 @@ ThreadDetail.propTypes = {
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   owner: PropTypes.shape(userShape).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
   authUser: PropTypes.string.isRequired,
   upVote: PropTypes.func.isRequired,
   downVote: PropTypes.func.isRequired,

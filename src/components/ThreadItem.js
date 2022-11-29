@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
-import { BiUpvote, BiDownvote } from 'react-icons/bi';
+import { BiUpvote, BiDownvote, BiComment } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { postedAt } from '../utils';
 
 function ThreadItem({
   id, title, body, category,
   createdAt, upVotesBy, downVotesBy,
-  ownerId, authUser,
+  ownerId, totalComments, authUser,
   upVote, downVote, clearVote,
 }) {
   const navigate = useNavigate();
@@ -92,6 +92,12 @@ function ThreadItem({
             )}
             {' '}
             {downVotesBy.length}
+            {' | '}
+            <BiComment />
+            {' '}
+            {totalComments}
+            {' '}
+            Comments
           </p>
         </div>
       </div>
@@ -102,7 +108,7 @@ function ThreadItem({
 const userShape = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  email: PropTypes.string,
   avatar: PropTypes.string.isRequired,
 };
 
@@ -116,6 +122,7 @@ const threadItemShape = {
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   authUser: PropTypes.string.isRequired,
   ownerId: PropTypes.shape(userShape).isRequired,
+  totalComments: PropTypes.number.isRequired,
 };
 
 ThreadItem.propTypes = {
