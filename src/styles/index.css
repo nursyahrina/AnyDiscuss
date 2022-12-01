@@ -12,7 +12,7 @@
   }
 
   .nav-item span {
-    @apply text-xl hidden md:block;
+    @apply hidden md:block;
   }
 
   input, .input-text {

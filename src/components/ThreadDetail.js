@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { postedAt } from '../utils';
+import parser from 'html-react-parser';
 import { userShape } from './ThreadItem';
 import VoteButtons from './VoteButtons';
+import ThreadInfo from './ThreadInfo';
 
 function ThreadDetail({
   id, title, body,
@@ -14,32 +15,28 @@ function ThreadDetail({
   return (
     <section className="thread-detail">
       <header>
-        <p>
-          #
-          {category}
-        </p>
-        <img src={owner.avatar} alt={owner} />
-        <div className="thread-detail__owner-info">
-          <p className="thread-detail__owner-name">{owner.name}</p>
-        </div>
-        <h3>{title}</h3>
+        <ThreadInfo
+          category={category}
+          createdAt={createdAt}
+          name={owner.name}
+          email={owner.email}
+          avatar={owner.avatar}
+        />
+        <h2 className="text-3xl my-2 font-bold text-emerald-700">{title}</h2>
       </header>
       <article>
-        <p className="thread-detail__body">{body}</p>
+        <div className="thread-detail__body py-4">{parser(body)}</div>
       </article>
-      <aside>
-        <div className="thread-detail__votes">
-          <VoteButtons
-            id={id}
-            authUser={authUser}
-            upVotes={upVotesBy}
-            downVotes={downVotesBy}
-            upVote={upVote}
-            downVote={downVote}
-            clearVote={clearVote}
-          />
-        </div>
-        <p className="thread-detail__created-at">{postedAt(createdAt)}</p>
+      <aside className="thread-detail__votes flex justify-end">
+        <VoteButtons
+          id={id}
+          authUser={authUser}
+          upVotes={upVotesBy}
+          downVotes={downVotesBy}
+          upVote={upVote}
+          downVote={downVote}
+          clearVote={clearVote}
+        />
       </aside>
     </section>
   );

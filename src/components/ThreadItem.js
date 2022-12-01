@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
 import { BiComment } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import { postedAt } from '../utils';
+
 import VoteButtons from './VoteButtons';
+import ThreadInfo from './ThreadInfo';
 
 function ThreadItem({
   id, title, body, category,
@@ -25,31 +26,23 @@ function ThreadItem({
   };
 
   return (
-    <div role="button" tabIndex={0} className="thread-item" onClick={onThreadClick} onKeyDown={onThreadPress}>
-      <div className="thread-item__user-avatar">
-        <img src={ownerId.avatar} alt={ownerId} />
-      </div>
+    <div role="button" tabIndex={0} className="thread-item p-4 border-t-2 border-emerald-700" onClick={onThreadClick} onKeyDown={onThreadPress}>
+      <ThreadInfo
+        category={category}
+        createdAt={createdAt}
+        name={ownerId.name}
+        email={ownerId.email}
+        avatar={ownerId.avatar}
+      />
       <div className="thread-item__detail">
-        <header>
-          <div className="thread-item__owner-info">
-            <p className="thread-item__owner-name">{ownerId.name}</p>
-            <p className="thread-item__owner-id">
-              {/* Take string before @ as display username */}
-              @
-              {ownerId.email.substring(0, ownerId.email.indexOf('@'))}
-            </p>
-          </div>
-          <p className="thread-item__created-at">{postedAt(createdAt)}</p>
-        </header>
-        <article>
-          <p className="thread-item__category">
-            #
-            {category}
+        <h3 className="thread-item__title text-2xl font-bold text-emerald-700">{title}</h3>
+        <div className="thread-item__body my-2 max-h-[8rem] text-ellipsis overflow-hidden">{parser(body)}</div>
+        <div className="thread-item__stat flex justify-between items-center">
+          <p className="flex gap-x-2 items-center">
+            <span><BiComment /></span>
+            <span className="font-bold">{totalComments}</span>
+            <span>Comments</span>
           </p>
-          <h3 className="thread-item__title">{title}</h3>
-          <div className="thread-item__body">{parser(body)}</div>
-        </article>
-        <div className="thread-item__upVotess">
           <VoteButtons
             id={id}
             authUser={authUser}
@@ -59,13 +52,6 @@ function ThreadItem({
             downVote={downVote}
             clearVote={clearVote}
           />
-          {' | '}
-          <BiComment />
-          {' '}
-          {totalComments}
-          {' '}
-          Comments
-
         </div>
       </div>
     </div>
