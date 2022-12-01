@@ -58,9 +58,8 @@ function ForumApp() {
     <>
       <Loading />
       <div className="app-container">
-        <header className="flex flex-wrap gap-4 justify-between px-5 py-5">
+        <header className="p-5">
           <AppBrand />
-          <Navigation authUser={authUser} signOut={onSignOut} />
         </header>
         <main>
           <Routes>
@@ -70,7 +69,10 @@ function ForumApp() {
             <Route path="/leaderboards" element={<LeaderboardsPage />} />
           </Routes>
         </main>
-        <Footer />
+        <footer className="bg-white fixed bottom-0 w-screen z-20 py-2 drop-shadow-xl text-center">
+          <Navigation authUser={authUser} signOut={onSignOut} />
+          <Footer />
+        </footer>
       </div>
     </>
   );

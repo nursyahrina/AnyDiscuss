@@ -1,18 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { BiTrophy, BiHome, BiLogOut } from 'react-icons/bi';
 
 function Navigation({ authUser, signOut }) {
   const { id, avatar, name } = authUser;
 
   return (
-    <div className="navigation">
-      <img src={avatar} alt={id} title={name} />
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/leaderboards">Leaderboards</Link>
+    <div className="navigation flex flex-row gap-x-4 md:gap-x-2 py-2 justify-center items-center">
+      <nav className="flex flex-row">
+        <Link className="nav-item" to="/">
+          <BiHome size={32} />
+          <span>Home</span>
+        </Link>
+        <Link className="nav-item" to="/leaderboards">
+          <BiTrophy size={32} />
+          <span>Leaderboards</span>
+        </Link>
+        <button className="nav-item" type="button" onClick={signOut}>
+          <BiLogOut size={32} className="mr-2" />
+          <span>Logout</span>
+        </button>
       </nav>
-      <button type="button" onClick={signOut}>Sign out</button>
+      <img src={avatar} alt={id} title={name} className="rounded-full w-8 md:w-14" />
     </div>
   );
 }
