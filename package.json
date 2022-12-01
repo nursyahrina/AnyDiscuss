@@ -23,7 +23,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "devcss": "npx tailwindcss -i ./src/styles/index.css -o ./public/css/output.css --watch",
+    "buildcss": "npx tailwindcss -o ./public/css/style.css --minify"
   },
   "eslintConfig": {
     "extends": [

@@ -9,6 +9,8 @@ import RegisterPage from './pages/RegisterPage';
 import AddPage from './pages/AddPage';
 import DetailPage from './pages/DetailPage';
 import LeaderboardsPage from './pages/LeaderboardsPage';
+import AppBrand from './components/AppBrand';
+import Footer from './components/Footer';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
 
@@ -36,12 +38,18 @@ function ForumApp() {
     return (
       <>
         <Loading />
-        <main>
-          <Routes>
-            <Route path="/*" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-          </Routes>
-        </main>
+        <div className="app-container">
+          <header className="flex flex-wrap gap-4 justify-between px-5 py-5">
+            <AppBrand />
+          </header>
+          <main>
+            <Routes>
+              <Route path="/*" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </>
     );
   }
@@ -50,7 +58,8 @@ function ForumApp() {
     <>
       <Loading />
       <div className="app-container">
-        <header>
+        <header className="flex flex-wrap gap-4 justify-between px-5 py-5">
+          <AppBrand />
           <Navigation authUser={authUser} signOut={onSignOut} />
         </header>
         <main>
@@ -61,6 +70,7 @@ function ForumApp() {
             <Route path="/leaderboards" element={<LeaderboardsPage />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </>
   );

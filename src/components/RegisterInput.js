@@ -16,11 +16,11 @@ function RegisterInput({ register }) {
   };
 
   return (
-    <form className="register-input">
+    <form className="pt-5 pb-2 flex flex-col">
       <input type="text" value={name} onChange={onNameChange} placeholder="Name" />
       <input type="email" value={email} onChange={onEmailChange} placeholder="Email" />
       <input type="password" value={password} onChange={onPasswordChange} placeholder="Password" />
-      <button type="button" onClick={registerUser}>Register</button>
+      <button className="input-button" type="button" onClick={registerUser}>Register</button>
     </form>
   );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { VscCommentDiscussion } from 'react-icons/vsc';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import RegisterInput from '../components/RegisterInput';
@@ -17,20 +16,15 @@ function RegisterPage() {
   return (
     <section className="section-container">
       <header className="section-container__header">
-        <h1>
-          <VscCommentDiscussion />
-          {' '}
-          AnyDiscuss?
-        </h1>
+        <h1>Register</h1>
       </header>
-      <article className="section-container__main">
-        <h2>Create new account</h2>
+      <article className="section-container__main flex flex-col">
+        <p className="text-2xl">Create your new account</p>
         <RegisterInput register={onRegister} />
-
-        <p>
+        <p className="mr-6 text-xl self-end">
           Already have an account?
           {' '}
-          <Link to="/">Login</Link>
+          <Link className="hover:underline font-bold" to="/">Login</Link>
         </p>
       </article>
     </section>

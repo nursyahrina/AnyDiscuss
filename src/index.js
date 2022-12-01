@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import ForumApp from './App';
 import store from './states';
 
+import './styles/index.css';
+
 const root = createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { VscCommentDiscussion } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginInput from '../components/LoginInput';
@@ -12,32 +11,28 @@ function LoginPage() {
     dispatch(asyncSetAuthUser({ email, password }));
   };
 
+  const pathRegister = '/register';
+
   return (
     <section className="section-container">
       <header className="section-container__header">
-        <h1>
-          <VscCommentDiscussion />
-          {' '}
-          AnyDiscuss?
-        </h1>
+        <h1>Login</h1>
       </header>
-      <article className="section-container__main">
-        <p>
+      <article className="section-container__main flex flex-col">
+        <p className="text-xl">
           <strong>Discuss anything</strong>
           {' '}
-          with fellow enthusiasts
-          <br />
-          from all over
+          with fellow enthusiasts from all over
           {' '}
           <strong>The World</strong>
           !
         </p>
 
         <LoginInput login={onLogin} />
-        <p>
+        <p className="mr-6 text-xl self-end">
           Don&apos;t have an account?
           {' '}
-          <Link to="/register">Register Here!</Link>
+          <Link className="hover:underline font-bold" to={pathRegister}>Register Here!</Link>
         </p>
       </article>
     </section>

@@ -7,10 +7,10 @@ function LoginInput({ login }) {
   const [password, onPasswordChange] = useInput('');
 
   return (
-    <form className="login-input">
+    <form className="pt-5 pb-2 flex flex-col">
       <input type="email" value={email} onChange={onEmailChange} placeholder="Email" />
       <input type="password" value={password} onChange={onPasswordChange} placeholder="Password" />
-      <button type="button" onClick={() => login({ email, password })}>Login</button>
+      <button className="input-button" type="button" onClick={() => login({ email, password })}>Login</button>
     </form>
   );
 }

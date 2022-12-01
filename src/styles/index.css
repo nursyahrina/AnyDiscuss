@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply h-full min-h-screen text-slate-800 bg-gradient-to-br from-emerald-100 to-emerald-300;
+  }
+
+  input, .input-text {
+    @apply mb-3 py-2 px-6 rounded-lg drop-shadow-sm bg-gradient-to-br from-white to-emerald-100 shadow-md;
+  }
+
+  .input-button {
+    @apply mb-3 px-3 py-2 rounded-lg drop-shadow-sm bg-accent-hover font-bold;
+  }
+
+  .section-container {
+    @apply container max-w-6xl mb-8 py-8;
+  }
+
+  .section-container__header {
+    @apply text-slate-800 border-emerald-800 w-fit text-3xl font-bold ml-6 mb-4 px-2 pb-2 border-b-8 rounded-lg drop-shadow-xl;
+  }
+
+  .section-container__main {
+    @apply text-slate-800 text-xl mx-6 mb-4 px-2 pb-2;
+  }
+
+  .bg-container {
+    @apply bg-gradient-to-br from-white to-emerald-200 shadow-xl;
+  }
+  .bg-accent-hover {
+    @apply text-slate-100 bg-gradient-to-br from-emerald-700 to-emerald-900 hover:from-emerald-900 hover:to-emerald-700;
+  }
+  .bg-danger-hover {
+    @apply bg-gradient-to-br from-rose-500 to-rose-800 hover:from-rose-800 hover:to-rose-500;
+  }
+  .bg-secondary-hover {
+    @apply bg-gradient-to-br from-slate-500 to-slate-800 hover:from-slate-800 hover:to-slate-500;
+  }
+
+  [contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-placeholder)
+  }
+}
