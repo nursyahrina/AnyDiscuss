@@ -6,7 +6,7 @@ function CommentsList({
   comments, upVote, downVote, clearVote, authUser,
 }) {
   return (
-    <div className="comments-list">
+    <div className="comments-list mt-8 flex flex-col items-center">
       {
          comments.map((comment) => (
            <CommentItem

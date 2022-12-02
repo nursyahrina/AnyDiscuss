@@ -22,22 +22,22 @@ function ThreadDetail({
           email={owner.email}
           avatar={owner.avatar}
         />
-        <h2 className="text-3xl my-2 font-bold text-emerald-700">{title}</h2>
+        <div className="thread-detail__info py-4 flex justify-between">
+          <h2 className="text-3xl my-2 font-bold text-emerald-700">{title}</h2>
+          <VoteButtons
+            id={id}
+            authUser={authUser}
+            upVotes={upVotesBy}
+            downVotes={downVotesBy}
+            upVote={upVote}
+            downVote={downVote}
+            clearVote={clearVote}
+          />
+        </div>
       </header>
-      <article>
-        <div className="thread-detail__body py-4">{parser(body)}</div>
+      <article className="thread-detail__body border-purple-700 border-b-2 mb-8 px-1 pt-4 pb-8">
+        <div>{parser(body)}</div>
       </article>
-      <aside className="thread-detail__votes flex justify-end">
-        <VoteButtons
-          id={id}
-          authUser={authUser}
-          upVotes={upVotesBy}
-          downVotes={downVotesBy}
-          upVote={upVote}
-          downVote={downVote}
-          clearVote={clearVote}
-        />
-      </aside>
     </section>
   );
 }

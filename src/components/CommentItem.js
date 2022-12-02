@@ -12,31 +12,23 @@ function CommentItem({
   upVote, downVote, clearVote,
 }) {
   return (
-    <div role="button" tabIndex={0} className="comment-item">
-      <div className="comment-item__user-avatar">
-        <img src={owner.avatar} alt={owner.name} />
+    <div className="comment-item flex flex-col md:flex-row gap-4 w-full px-3 py-4 border-b-2 border-emerald-400">
+      <div className="comment-item__info basis-2/12">
+        <img className="comment-item__user-avatar rounded-full" width={32} src={owner.avatar} alt={owner.name} />
+        <p className="comment-item__owner-name font-semibold">{owner.name}</p>
+        <p className="comment-item__created-at text-sm">{postedAt(createdAt)}</p>
       </div>
-      <div className="comment-item__detail">
-        <header>
-          <div className="comment-item__owner-info">
-            <p className="comment-item__owner-name">{owner.name}</p>
-          </div>
-          <p className="comment-item__created-at">{postedAt(createdAt)}</p>
-        </header>
-        <article>
-          <div className="comment-item__body">{parser(content)}</div>
-        </article>
-        <div className="comment-item__upVotess">
-          <VoteButtons
-            id={id}
-            authUser={authUser}
-            upVotes={upVotesBy}
-            downVotes={downVotesBy}
-            upVote={upVote}
-            downVote={downVote}
-            clearVote={clearVote}
-          />
-        </div>
+      <div className="comment-item__body basis-9/12">{parser(content)}</div>
+      <div className="comment-item__upVotess basis-1/12 self-end md:self-start">
+        <VoteButtons
+          id={id}
+          authUser={authUser}
+          upVotes={upVotesBy}
+          downVotes={downVotesBy}
+          upVote={upVote}
+          downVote={downVote}
+          clearVote={clearVote}
+        />
       </div>
     </div>
   );

@@ -56,7 +56,13 @@ function DetailPage() {
   };
 
   if (!threadDetail) {
-    return <p>Thread is not found!</p>;
+    return (
+      <section className="section-container">
+        <header className="section-container__header">
+          <h1>Sorry, Thread is not found.</h1>
+        </header>
+      </section>
+    );
   }
 
   return (
@@ -69,24 +75,24 @@ function DetailPage() {
           downVote={onDownVoteClick}
           clearVote={onClearVoteClick}
         />
+        <div className="my-3">
+          <CommentInput addComment={onAddCommentThread} />
+        </div>
+        <div>
+          <h4 className="mx-3 text-xl font-bold">
+            {threadDetail.comments.length}
+            {' '}
+            Comments
+          </h4>
+          <CommentsList
+            comments={threadDetail.comments}
+            upVote={onUpVoteCommentClick}
+            downVote={onDownVoteCommentClick}
+            clearVote={onClearVoteCommentClick}
+            authUser={authUser.id}
+          />
+        </div>
       </div>
-      <div>
-        <CommentInput addComment={onAddCommentThread} />
-      </div>
-      <article>
-        <h4>
-          {threadDetail.comments.length}
-          {' '}
-          Comments
-        </h4>
-        <CommentsList
-          comments={threadDetail.comments}
-          upVote={onUpVoteCommentClick}
-          downVote={onDownVoteCommentClick}
-          clearVote={onClearVoteCommentClick}
-          authUser={authUser.id}
-        />
-      </article>
     </section>
   );
 }

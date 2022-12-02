@@ -20,15 +20,16 @@ function CommentInput({ addComment }) {
   };
 
   return (
-    <div className="comment-input">
+    <div className="comment-input flex flex-col md:flex-row gap-3">
       <div
         id="comment-input__editable"
+        className="md:basis-11/12 input-text min-h-[100px]"
         suppressContentEditableWarning
         data-placeholder="What are you thinking about this thread?"
         contentEditable
         onInput={onContentChangeHandler}
       />
-      <button type="submit" onClick={submitComment}>Send</button>
+      <button className="md:basis-1/12 input-button px-5" type="submit" onClick={submitComment}>Send</button>
     </div>
   );
 }
