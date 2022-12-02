@@ -17,7 +17,9 @@ function AddPage() {
   return (
     <section>
       <div className="section-container">
-        <h2 className="section-title">Create New Thread</h2>
+        <header className="section-container__header">
+          <h1>Create New Thread</h1>
+        </header>
         <ThreadInput addThread={onAddThread} />
       </div>
     </section>

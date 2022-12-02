@@ -14,16 +14,17 @@ function ThreadInput({ addThread }) {
   const onBodyChangeHandler = (event) => setBody(event.target.innerHTML);
 
   return (
-    <div className="thread-input">
+    <form className="pt-5 pb-2 mx-6 flex flex-col">
       <input type="text" value={title} onChange={onTitleChange} placeholder="Title" />
       <input type="text" value={category} onChange={onCategoryChange} placeholder="Category" />
       <div
+        className="input-text min-h-[20rem]"
         data-placeholder="What are you thinking?"
         contentEditable
         onInput={onBodyChangeHandler}
       />
-      <button type="submit" onClick={() => addThread({ title, category, body })}>Submit</button>
-    </div>
+      <button className="mt-2 input-button" type="submit" onClick={() => addThread({ title, category, body })}>Submit</button>
+    </form>
   );
 }
 

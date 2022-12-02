@@ -26,7 +26,7 @@ function LeaderboardsPage() {
           Leaderboards
         </h1>
       </header>
-      <article className="p-8 mb-28">
+      <article className="p-8">
         <h3 className="text-2xl font-bold">Top 10 Active Users</h3>
         <div className="leader-list">
           <div className="flex flex-wrap justify-center items-center gap-6 my-6">

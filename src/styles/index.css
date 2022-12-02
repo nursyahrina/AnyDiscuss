@@ -24,7 +24,7 @@
   }
 
   .section-container {
-    @apply container max-w-6xl mb-8 py-8;
+    @apply container max-w-6xl mb-32 py-8;
   }
 
   .section-container__header {
