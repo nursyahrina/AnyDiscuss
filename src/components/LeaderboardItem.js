@@ -6,9 +6,11 @@ function LeaderboardItem({
   user, score,
 }) {
   return (
-    <div>
-      <img src={user.avatar} alt={user.name} />
-      <p>{user.name}</p>
+    <div className="flex justify-between items-center border-purple-200 border-b-2 p-4 w-full text-xl">
+      <div className="flex items-center gap-4">
+        <img className="rounded-full" src={user.avatar} alt={user.name} />
+        <p className="font-bold">{user.name}</p>
+      </div>
       <p>{score}</p>
     </div>
   );

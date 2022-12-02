@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { VscCommentDiscussion } from 'react-icons/vsc';
+import { BiTrophy } from 'react-icons/bi';
 import { asyncPopulateLeaderboards } from '../states/leaderboards/action';
 import LeaderboardItem from '../components/LeaderboardItem';
 import LeaderboardTopItem from '../components/LeaderboardTopItem';
@@ -21,29 +21,33 @@ function LeaderboardsPage() {
     <section className="section-container">
       <header className="section-container__header">
         <h1>
-          <VscCommentDiscussion />
+          <BiTrophy />
           {' '}
-          AnyDiscuss? Leaderboards
+          Leaderboards
         </h1>
       </header>
-      <article>
-        <h3>Top 10 Active Users</h3>
+      <article className="p-8 mb-28">
+        <h3 className="text-2xl font-bold">Top 10 Active Users</h3>
         <div className="leader-list">
-          { leaderboards.slice(0, 3).map(({ user, score }, index) => (
-            <LeaderboardTopItem
-              key={user.id}
-              user={user}
-              score={score}
-              rank={index + 1}
-            />
-          ))}
-          { leaderboards.slice(3, leaderboards.length).map(({ user, score }) => (
-            <LeaderboardItem
-              key={user.id}
-              user={user}
-              score={score}
-            />
-          ))}
+          <div className="flex flex-wrap justify-center items-center gap-6 my-6">
+            { leaderboards.slice(0, 3).map(({ user, score }, index) => (
+              <LeaderboardTopItem
+                key={user.id}
+                user={user}
+                score={score}
+                rank={index + 1}
+              />
+            ))}
+          </div>
+          <div className="flex flex-col justify-between items-center mt-12 bg-emerald-50 p-4 rounded-xl">
+            { leaderboards.slice(3, leaderboards.length).map(({ user, score }) => (
+              <LeaderboardItem
+                key={user.id}
+                user={user}
+                score={score}
+              />
+            ))}
+          </div>
         </div>
       </article>
       <aside>
