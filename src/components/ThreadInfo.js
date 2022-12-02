@@ -8,7 +8,7 @@ function ThreadInfo({
   return (
     <div className="flex justify-between">
       <div className="thread-item__info flex items-center">
-        <p className="thread-item__category w-fit text-sm rounded-lg px-3 py-1 my-1 bg-white">
+        <p className="thread-item__category w-fit text-sm font-bold rounded-lg px-3 py-1 my-1 bg-white text-purple-700 drop-shadow-lg">
           #
           {category}
         </p>
@@ -16,8 +16,8 @@ function ThreadInfo({
       </div>
       <div className="thread-item__owner-avatar flex items-center gap-2">
         <div className="thread-item__owner-info flex flex-col items-end">
-          <p className="thread-item__owner-name">{name}</p>
-          <p className="thread-item__owner-id">
+          <p className="thread-item__owner-name font-bold">{name}</p>
+          <p className="thread-item__owner-id text-sm">
             {/* Take string before @ as display username */}
             @
             {email.substring(0, email.indexOf('@'))}

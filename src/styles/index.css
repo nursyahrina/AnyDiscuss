@@ -28,7 +28,7 @@
   }
 
   .section-container__header {
-    @apply text-slate-800 border-emerald-800 w-fit text-3xl font-bold ml-6 mb-4 px-2 pb-2 border-b-8 rounded-lg drop-shadow-xl;
+    @apply text-slate-800 border-purple-800 w-fit text-3xl font-bold ml-6 mb-4 px-2 pb-2 border-b-8 rounded-lg drop-shadow-xl;
   }
 
   .section-container__main {
@@ -40,7 +40,7 @@
   }
 
   .bg-accent-hover {
-    @apply text-slate-100 bg-gradient-to-br from-emerald-700 to-emerald-900 hover:from-emerald-900 hover:to-emerald-700;
+    @apply text-slate-100 bg-gradient-to-br from-purple-700 to-purple-900 hover:from-purple-900 hover:to-purple-700;
   }
 
   .bg-danger-hover {

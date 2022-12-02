@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { VscCommentDiscussion } from 'react-icons/vsc';
 import ThreadsList from '../components/ThreadsList';
 import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 import { asyncUpVoteThread, asyncDownVoteThread, asyncClearVoteThread } from '../states/threads/action';
@@ -38,6 +39,13 @@ function HomePage() {
 
   return (
     <section className="section-container">
+      <header className="section-container__header">
+        <h1>
+          <VscCommentDiscussion />
+          {' '}
+          Threads
+        </h1>
+      </header>
       <ThreadsList
         threads={threadList}
         authUser={authUser.id}
@@ -46,7 +54,7 @@ function HomePage() {
         clearVote={onClearVote}
       />
       <aside>
-        <AddButton className="fixed bottom-16 right-8" />
+        <AddButton />
       </aside>
     </section>
   );

@@ -6,7 +6,7 @@ function ThreadsList({
   threads, upVote, downVote, clearVote,
 }) {
   return (
-    <div className="threads-list">
+    <div className="threads-list mb-28 px-2">
       {
          threads.map((thread) => (
            <ThreadItem
