@@ -23,8 +23,12 @@
     @apply mb-3 px-3 py-2 rounded-lg drop-shadow-sm bg-accent-hover font-bold;
   }
 
+  .categories-button {
+    @apply text-sm font-bold rounded-lg px-3 py-1 my-1 drop-shadow-lg;
+  }
+
   .section-container {
-    @apply container max-w-6xl mb-36 py-8;
+    @apply container max-w-6xl pb-48 py-8;
   }
 
   .section-container__header {
@@ -41,14 +45,6 @@
 
   .bg-accent-hover {
     @apply text-slate-100 bg-gradient-to-br from-purple-700 to-purple-900 hover:from-purple-900 hover:to-purple-700;
-  }
-
-  .bg-danger-hover {
-    @apply bg-gradient-to-br from-rose-500 to-rose-800 hover:from-rose-800 hover:to-rose-500;
-  }
-
-  .bg-secondary-hover {
-    @apply bg-gradient-to-br from-slate-500 to-slate-800 hover:from-slate-800 hover:to-slate-500;
   }
 
   [contentEditable=true]:empty:not(:focus):before {
