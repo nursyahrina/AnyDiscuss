@@ -20,10 +20,9 @@ function LeaderboardsPage() {
   return (
     <section className="section-container">
       <header className="section-container__header">
-        <h1>
+        <h1 className="flex gap-2 items-center">
           <BiTrophy />
-          {' '}
-          Leaderboards
+          <span>Leaderboards</span>
         </h1>
       </header>
       <article className="p-8">

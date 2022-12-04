@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { BiLogInCircle } from 'react-icons/bi';
 import LoginInput from '../components/LoginInput';
 import { asyncSetAuthUser } from '../states/authUser/action';
 
@@ -16,7 +17,10 @@ function LoginPage() {
   return (
     <section className="section-container">
       <header className="section-container__header">
-        <h1>Login</h1>
+        <h1 className="flex gap-2 items-center">
+          <BiLogInCircle />
+          <span>Login</span>
+        </h1>
       </header>
       <article className="section-container__main flex flex-col">
         <p className="text-xl">

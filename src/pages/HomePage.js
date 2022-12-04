@@ -40,10 +40,9 @@ function HomePage() {
   return (
     <section className="section-container">
       <header className="section-container__header">
-        <h1>
+        <h1 className="flex gap-2 items-center">
           <VscCommentDiscussion />
-          {' '}
-          Threads
+          <span>Threads</span>
         </h1>
       </header>
       <ThreadsList

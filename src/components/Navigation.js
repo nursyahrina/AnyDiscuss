@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { BiTrophy, BiHome, BiLogOut } from 'react-icons/bi';
+import { BiTrophy, BiHome, BiLogOutCircle } from 'react-icons/bi';
 
 function Navigation({ authUser, signOut }) {
   const { id, avatar, name } = authUser;
@@ -18,7 +18,7 @@ function Navigation({ authUser, signOut }) {
           <span>Leaderboards</span>
         </Link>
         <button className="nav-item" type="button" onClick={signOut}>
-          <BiLogOut size={28} className="mr-2" />
+          <BiLogOutCircle size={28} className="mr-2" />
           <span>Logout</span>
         </button>
       </nav>
