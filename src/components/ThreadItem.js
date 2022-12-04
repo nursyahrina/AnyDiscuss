@@ -25,7 +25,7 @@ function ThreadItem({
   };
 
   return (
-    <div role="button" tabIndex={0} className="thread-item p-5 border-b-2 border-emerald-700 hover:bg-emerald-100" onClick={onThreadClick} onKeyDown={onThreadPress}>
+    <div role="button" tabIndex={0} className="thread-item p-5 bg-white border-b-2 border-emerald-700 hover:bg-emerald-100" onClick={onThreadClick} onKeyDown={onThreadPress}>
       <ThreadInfo
         category={category}
         createdAt={createdAt}
@@ -35,7 +35,7 @@ function ThreadItem({
       />
       <div className="thread-item__detail">
         <h3 className="thread-item__title my-2 text-2xl font-bold text-emerald-700">{title}</h3>
-        <div className="thread-item__body mt-2 mb-4 max-h-[9rem] text-ellipsis overflow-hidden rounded-xl">{parser(body)}</div>
+        <div className="thread-item__body mt-2 mb-4 max-h-[8.75rem] text-ellipsis overflow-hidden rounded-xl">{parser(body)}</div>
         <div className="thread-item__stat flex justify-between items-center">
           <p className="flex gap-x-2 items-center">
             <BiComment />

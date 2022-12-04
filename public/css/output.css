@@ -504,6 +504,22 @@ input, .input-text {
           filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.categories-button {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .section-container {
   width: 100%;
   margin-right: auto;
@@ -543,10 +559,9 @@ input, .input-text {
 }
 
 .section-container {
-  margin-bottom: 9rem;
   max-width: 72rem;
   padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 12rem;
 }
 
 .section-container__header {
@@ -779,6 +794,10 @@ input, .input-text {
   z-index: 30;
 }
 
+.m-5 {
+  margin: 1.25rem;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -849,8 +868,8 @@ input, .input-text {
   height: 3rem;
 }
 
-.max-h-\[9rem\] {
-  max-height: 9rem;
+.max-h-\[8\.75rem\] {
+  max-height: 8.75rem;
 }
 
 .min-h-\[100px\] {
@@ -873,6 +892,10 @@ input, .input-text {
   width: 100%;
 }
 
+.w-\[20rem\] {
+  width: 20rem;
+}
+
 .w-8 {
   width: 2rem;
 }
@@ -881,10 +904,6 @@ input, .input-text {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-}
-
-.min-w-\[20rem\] {
-  min-width: 20rem;
 }
 
 .flex-none {
@@ -1018,6 +1037,11 @@ input, .input-text {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-purple-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+}
+
 .bg-emerald-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(236 253 245 / var(--tw-bg-opacity));
@@ -1035,16 +1059,12 @@ input, .input-text {
   padding: 1rem;
 }
 
-.p-8 {
-  padding: 2rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
 .p-3 {
   padding: 0.75rem;
+}
+
+.p-8 {
+  padding: 2rem;
 }
 
 .px-5 {
@@ -1082,6 +1102,11 @@ input, .input-text {
   padding-bottom: 0.25rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .pt-5 {
   padding-top: 1.25rem;
 }
@@ -1104,6 +1129,10 @@ input, .input-text {
 
 .pb-8 {
   padding-bottom: 2rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-center {
@@ -1166,6 +1195,11 @@ input, .input-text {
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .underline {
