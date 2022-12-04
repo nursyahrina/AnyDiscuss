@@ -13,17 +13,21 @@ function HomePage() {
     authUser,
   } = useSelector((states) => states);
 
+  const [filter, setFilter] = React.useState('');
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(asyncPopulateUsersAndThreads());
-  }, [dispatch]);
+  const categories = new Set(threads.map((thread) => thread.category));
 
   const threadList = threads.map((thread) => ({
     ...thread,
     ownerId: users.find((user) => user.id === thread.ownerId),
     authUser: authUser.id,
   }));
+
+  useEffect(() => {
+    dispatch(asyncPopulateUsersAndThreads());
+  }, [dispatch]);
 
   const onUpVote = (id) => {
     dispatch(asyncUpVoteThread(id));
@@ -45,8 +49,24 @@ function HomePage() {
           <span>Threads</span>
         </h1>
       </header>
+      <div className="px-6 pb-4 flex flex-wrap gap-3">
+        {Array.from(categories).map((category) => {
+          if (filter === category) {
+            return (
+              <button type="button" key={category} className="categories-button text-white bg-purple-700" onClick={() => setFilter('')}>
+                {`#${category}`}
+              </button>
+            );
+          }
+          return (
+            <button type="button" key={category} className="categories-button bg-white text-purple-700" onClick={() => setFilter(category)}>
+              {`#${category}`}
+            </button>
+          );
+        })}
+      </div>
       <ThreadsList
-        threads={threadList}
+        threads={(filter === '' && threadList) || threadList.filter((thread) => thread.category === filter)}
         authUser={authUser.id}
         upVote={onUpVote}
         downVote={onDownVote}
