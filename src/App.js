@@ -30,6 +30,13 @@ function ForumApp() {
     dispatch(asyncUnsetAuthUser());
   };
 
+  const pathHome = '/';
+  const pathAuth = '/*';
+  const pathRegister = '/register';
+  const pathLeaderbooards = '/leaderboards';
+  const pathAddNew = '/threads/new';
+  const pathDetail = '/threads/:id';
+
   if (isPreload) {
     return null;
   }
@@ -44,8 +51,8 @@ function ForumApp() {
           </header>
           <main>
             <Routes>
-              <Route path="/*" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
+              <Route path={pathAuth} element={<LoginPage />} />
+              <Route path={pathRegister} element={<RegisterPage />} />
             </Routes>
           </main>
           <Footer />
@@ -63,10 +70,10 @@ function ForumApp() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/threads/new" element={<AddPage />} />
-            <Route path="/threads/:id" element={<DetailPage />} />
-            <Route path="/leaderboards" element={<LeaderboardsPage />} />
+            <Route path={pathHome} element={<HomePage />} />
+            <Route path={pathAddNew} element={<AddPage />} />
+            <Route path={pathDetail} element={<DetailPage />} />
+            <Route path={pathLeaderbooards} element={<LeaderboardsPage />} />
           </Routes>
         </main>
         <footer className="bg-white fixed bottom-0 w-screen z-20 py-2 drop-shadow-xl text-center">
