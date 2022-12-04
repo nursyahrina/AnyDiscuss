@@ -80,9 +80,7 @@ function DetailPage() {
         </div>
         <div>
           <h4 className="mx-3 text-xl font-bold">
-            {threadDetail.comments.length}
-            {' '}
-            Comments
+            {`${threadDetail.comments.length} Comments`}
           </h4>
           <CommentsList
             comments={threadDetail.comments}

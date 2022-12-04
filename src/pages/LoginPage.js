@@ -25,9 +25,7 @@ function LoginPage() {
       <article className="section-container__main flex flex-col">
         <p className="text-xl">
           <strong>Discuss anything</strong>
-          {' '}
-          with fellow enthusiasts from all over
-          {' '}
+          {' with fellow enthusiasts from all over '}
           <strong>The World</strong>
           !
         </p>

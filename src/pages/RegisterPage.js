@@ -26,8 +26,7 @@ function RegisterPage() {
         <p className="text-2xl">Create your new account</p>
         <RegisterInput register={onRegister} />
         <p className="mr-6 text-xl self-end">
-          Already have an account?
-          {' '}
+          {'Already have an account? '}
           <Link className="hover:underline font-bold" to="/">Login</Link>
         </p>
       </article>
