@@ -59,7 +59,7 @@ function DetailPage() {
     return (
       <section className="section-container">
         <header className="section-container__header">
-          <h1>Sorry, Thread is not found.</h1>
+          <h1>Sorry, Thread is not found T.T</h1>
         </header>
       </section>
     );
