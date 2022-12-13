@@ -35,11 +35,7 @@ function CommentInput({ addComment }) {
 }
 
 CommentInput.propTypes = {
-  addComment: PropTypes.func,
-};
-
-CommentInput.defaultProps = {
-  addComment: null,
+  addComment: PropTypes.func.isRequired,
 };
 
 export default CommentInput;
